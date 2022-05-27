@@ -1,98 +1,148 @@
 package com.github.catvod.spider;
 
-import com.github.catvod.crawler.Spider;
-import com.github.catvod.utils.Misc;
-
+import android.content.Context;
+import com.github.catvod.spider.merge.I7;
+import com.github.catvod.spider.merge.S;
+import com.github.catvod.spider.merge.TUn;
+import com.github.catvod.spider.merge.We;
+import java.util.Collections;
+import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.List;
-
-/**
- * Author: @SDL
- */
-public class PushAgent extends Spider {
-    @Override
-    public String detailContent(List<String> ids) {
-        try {
-            String url = ids.get(0);
-            if (Misc.isVip(url)) {
-                JSONObject result = new JSONObject();
-                JSONArray list = new JSONArray();
-                JSONObject vodAtom = new JSONObject();
-                vodAtom.put("vod_id", url);
-                vodAtom.put("vod_name", url);
-                vodAtom.put("vod_pic", "https://pic.rmb.bdstatic.com/bjh/1d0b02d0f57f0a42201f92caba5107ed.jpeg");
-                vodAtom.put("type_name", "官源");
-                vodAtom.put("vod_year", "");
-                vodAtom.put("vod_area", "");
-                vodAtom.put("vod_remarks", "");
-                vodAtom.put("vod_actor", "");
-                vodAtom.put("vod_director", "");
-                vodAtom.put("vod_content", "");
-                vodAtom.put("vod_play_from", "jx");
-                vodAtom.put("vod_play_url", "立即播放$" + url);
-                list.put(vodAtom);
-                result.put("list", list);
-                return result.toString();
-            } else if (Misc.isVideoFormat(url)) {
-                JSONObject result = new JSONObject();
-                JSONArray list = new JSONArray();
-                JSONObject vodAtom = new JSONObject();
-                vodAtom.put("vod_id", url);
-                vodAtom.put("vod_name", url);
-                vodAtom.put("vod_pic", "https://pic.rmb.bdstatic.com/bjh/1d0b02d0f57f0a42201f92caba5107ed.jpeg");
-                vodAtom.put("type_name", "直连");
-                vodAtom.put("vod_play_from", "player");
-                vodAtom.put("vod_play_url", "立即播放$" + url);
-                list.put(vodAtom);
-                result.put("list", list);
-                return result.toString();
-            } else if (url.startsWith("http://") || url.startsWith("https://")) {
-                JSONObject result = new JSONObject();
-                JSONArray list = new JSONArray();
-                JSONObject vodAtom = new JSONObject();
-                vodAtom.put("vod_id", url);
-                vodAtom.put("vod_name", url);
-                vodAtom.put("vod_pic", "https://pic.rmb.bdstatic.com/bjh/1d0b02d0f57f0a42201f92caba5107ed.jpeg");
-                vodAtom.put("type_name", "网页");
-                vodAtom.put("vod_play_from", "parse");
-                vodAtom.put("vod_play_url", "立即播放$" + url);
-                list.put(vodAtom);
-                result.put("list", list);
-                return result.toString();
-            }
-        } catch (Throwable throwable) {
-
-        }
-        return "";
-    }
-
-    @Override
-    public String playerContent(String flag, String id, List<String> vipFlags) {
-        try {
-            if (flag.equals("jx")) {
-                JSONObject result = new JSONObject();
-                result.put("parse", 1);
-                result.put("jx", "1");
-                result.put("url", id);
-                return result.toString();
-            } else if (flag.equals("parse")) {
-                JSONObject result = new JSONObject();
-                result.put("parse", 1);
-                result.put("playUrl", "");
-                result.put("url", id);
-                return result.toString();
-            } else if (flag.equals("player")) {
-                JSONObject result = new JSONObject();
-                result.put("parse", 0);
-                result.put("playUrl", "");
-                result.put("url", id);
-                return result.toString();
-            }
-        } catch (Throwable throwable) {
-
-        }
-        return "";
-    }
+public class Push extends I7 {
+  private We A;
+  
+  protected void A(Context paramContext) {
+    super.A(paramContext);
+    We we = new We();
+    this.A = we;
+    we.init(paramContext);
+  }
+  
+  protected String V(String paramString) {
+    try {
+      StringBuilder stringBuilder;
+      if (this.A.oj(paramString))
+        return this.A.detailContent(Collections.singletonList(paramString)); 
+      boolean bool = S.O(paramString);
+      String str1 = TUn.d("1C081E10");
+      String str2 = TUn.d("97CAE681C8DF96F3C082D1D254");
+      String str3 = TUn.d("060E093B3500111832113700");
+      String str4 = TUn.d("060E093B35001118320237031D");
+      String str5 = TUn.d("04181D011A02110C08");
+      String str6 = TUn.d("1815191436565F4E1D0D2642020C0F4A270803150C102C0F5E0202096A0E1A094255215C12515F00750A45560B54245842535D55235542020C06245941515A0121421A110803");
+      String str7 = TUn.d("060E093B350513");
+      String str8 = TUn.d("060E093B2B0D1D04");
+      String str9 = TUn.d("060E093B2C08");
+      if (bool) {
+        JSONObject jSONObject1 = new JSONObject();
+        this();
+        JSONArray jSONArray = new JSONArray();
+        this();
+        JSONObject jSONObject2 = new JSONObject();
+        this();
+        jSONObject2.put(str9, paramString);
+        jSONObject2.put(str8, paramString);
+        jSONObject2.put(str7, str6);
+        jSONObject2.put(str5, TUn.d("95CFF582FFFC"));
+        jSONObject2.put(TUn.d("060E093B3C091113"), "");
+        jSONObject2.put(TUn.d("060E093B241E1500"), "");
+        jSONObject2.put(TUn.d("060E093B37091D001F0F36"), "");
+        jSONObject2.put(TUn.d("060E093B240F040E1F"), "");
+        jSONObject2.put(TUn.d("060E093B210502040E102A1E"), "");
+        jSONObject2.put(TUn.d("060E093B26031E15080A31"), "");
+        jSONObject2.put(str4, TUn.d("1A19"));
+        stringBuilder = new StringBuilder();
+        this();
+        stringBuilder.append(str2);
+        stringBuilder.append(paramString);
+        jSONObject2.put(str3, stringBuilder.toString());
+        jSONArray.put(jSONObject2);
+        jSONObject1.put(str1, jSONArray);
+        return jSONObject1.toString();
+      } 
+      if (S.vH(paramString)) {
+        JSONObject jSONObject1 = new JSONObject();
+        this();
+        JSONArray jSONArray = new JSONArray();
+        this();
+        JSONObject jSONObject2 = new JSONObject();
+        this();
+        jSONObject2.put(str9, paramString);
+        jSONObject2.put((String)stringBuilder, paramString);
+        jSONObject2.put(str7, str6);
+        jSONObject2.put(str5, TUn.d("97FAD98CFAF2"));
+        jSONObject2.put(str4, TUn.d("000D0C1D201E"));
+        stringBuilder = new StringBuilder();
+        this();
+        stringBuilder.append(str2);
+        stringBuilder.append(paramString);
+        jSONObject2.put(str3, stringBuilder.toString());
+        jSONArray.put(jSONObject2);
+        jSONObject1.put(str1, jSONArray);
+        return jSONObject1.toString();
+      } 
+      if (paramString.startsWith(TUn.d("181519147F435F")) || paramString.startsWith(TUn.d("1815191436565F4E"))) {
+        JSONObject jSONObject1 = new JSONObject();
+        this();
+        JSONArray jSONArray = new JSONArray();
+        this();
+        JSONObject jSONObject2 = new JSONObject();
+        this();
+        jSONObject2.put(str9, paramString);
+        jSONObject2.put((String)stringBuilder, paramString);
+        jSONObject2.put(str7, str6);
+        jSONObject2.put(str5, TUn.d("97DCFC8DE4D9"));
+        jSONObject2.put(str4, TUn.d("00001F1720"));
+        stringBuilder = new StringBuilder();
+        this();
+        stringBuilder.append(str2);
+        stringBuilder.append(paramString);
+        jSONObject2.put(str3, stringBuilder.toString());
+        jSONArray.put(jSONObject2);
+        jSONObject1.put(str1, jSONArray);
+        return jSONObject1.toString();
+      } 
+    } finally {}
+    return "";
+  }
+  
+  protected String ed(String paramString1, String paramString2, List<String> paramList) {
+    String str = TUn.d("1A19");
+    try {
+      if (paramString1.equals(TUn.d("110D041D35")))
+        return this.A.playerContent(paramString1, paramString2, paramList); 
+      boolean bool = paramString1.equals(str);
+      String str1 = TUn.d("051301");
+      String str2 = TUn.d("00001F1720");
+      if (bool) {
+        JSONObject jSONObject = new JSONObject();
+        this();
+        jSONObject.put(str2, 1);
+        jSONObject.put(str, TUn.d("41"));
+        jSONObject.put(str1, paramString2);
+        return jSONObject.toString();
+      } 
+      bool = paramString1.equals(str2);
+      str = TUn.d("000D0C1D101E1C");
+      if (bool) {
+        JSONObject jSONObject = new JSONObject();
+        this();
+        jSONObject.put(str2, 1);
+        jSONObject.put(str, "");
+        jSONObject.put(str1, paramString2);
+        return jSONObject.toString();
+      } 
+      if (paramString1.equals(TUn.d("000D0C1D201E"))) {
+        JSONObject jSONObject = new JSONObject();
+        this();
+        jSONObject.put(str2, 0);
+        jSONObject.put(str, "");
+        jSONObject.put(str1, paramString2);
+        return jSONObject.toString();
+      } 
+    } finally {}
+    return "";
+  }
 }
