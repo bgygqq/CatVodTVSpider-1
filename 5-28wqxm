@@ -1,7 +1,7 @@
 {
   "wallpaper": "",
-  “蜘蛛”：“https://breadmyth.coding.net/p/bread/d/tv/git/raw/master/xpath/wqxm.jar",
-  //"蜘蛛": "https://github.com/bgygqq/CatVodTVSpider-1/blob/master/jar/5-28wqxm.jar?raw=true",
+  "spider"：“https://breadmyth.coding.net/p/bread/d/tv/git/raw/master/xpath/wqxm.jar",
+  //"spider": "https://github.com/bgygqq/CatVodTVSpider-1/blob/master/jar/5-28wqxm.jar?raw=true",
 
   
   "sites":[
